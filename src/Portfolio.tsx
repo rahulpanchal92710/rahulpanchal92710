@@ -185,7 +185,7 @@ export default function Portfolio() {
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    Recognized as "Top Recruiter of Q3 2018" by the President's Circle.
+                    Recognized as "Top Recruiter of Q3 2018\" by the President's Circle.
                   </li>
                 </ul>
               </CardContent>
