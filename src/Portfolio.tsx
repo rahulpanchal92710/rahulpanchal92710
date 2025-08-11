@@ -110,6 +110,13 @@ export default function Portfolio() {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-40 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="text-center">
             <motion.div
@@ -119,10 +126,14 @@ export default function Portfolio() {
               className="mb-8"
             >
               <div className="relative inline-block">
-                <div className="w-32 h-32 mx-auto mb-8 relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full" />
-                  <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">RP</span>
+                <div className="w-40 h-40 mx-auto mb-8 relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse" />
+                  <div className="absolute inset-1 bg-white rounded-full overflow-hidden shadow-2xl">
+                    <img 
+                      src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                      alt="Rahul Panchal" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
               </div>
@@ -205,7 +216,12 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <AnimatedSection id="about" className="py-24 bg-white">
+      <AnimatedSection id="about" className="py-24 bg-gradient-to-br from-white via-slate-50 to-blue-50 relative">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-3">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full filter blur-3xl"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6">
@@ -217,7 +233,7 @@ export default function Portfolio() {
           </div>
           
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+            <div className="space-y-8 relative z-10">
               <h3 className="text-3xl font-bold text-gray-900 mb-6">
                 Passionate About Building{" "}
                 <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
@@ -247,7 +263,19 @@ export default function Portfolio() {
               </div>
             </div>
             
-            <div className="space-y-8">
+            <div className="space-y-8 relative z-10">
+              {/* Professional photo */}
+              <div className="mb-12">
+                <div className="relative w-80 h-96 mx-auto rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                    alt="Professional workspace" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+              </div>
+              
               {[
                 {
                   icon: User,
@@ -289,7 +317,12 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Experience Section */}
-      <AnimatedSection id="experience" className="py-24 bg-gray-50">
+      <AnimatedSection id="experience" className="py-24 bg-gradient-to-br from-slate-100 via-gray-50 to-blue-50 relative">
+        {/* Background elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-300 to-pink-300 rounded-full filter blur-3xl"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6">
@@ -307,6 +340,7 @@ export default function Portfolio() {
                 role: "Recruiter - Biometric Requirements",
                 period: "Apr 2020 – Present",
                 location: "Remote",
+                image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
                 achievements: [
                   "Leading recruitment for North America in Biostatistics, Programming, and Clinical Data roles",
                   "Expertise in sourcing, screening, engaging, and hiring through innovative recruiting strategies",
@@ -320,6 +354,7 @@ export default function Portfolio() {
                 role: "HR Recruiter",
                 period: "Apr 2019 – Mar 2020",
                 location: "Pune, India",
+                image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
                 achievements: [
                   "Focused on Biometrics and Clinical positions across major pharmaceutical accounts",
                   "Streamlined recruitment process post-acquisition by IQVIA",
@@ -332,6 +367,7 @@ export default function Portfolio() {
                 role: "Senior Technical Recruiter",
                 period: "Nov 2017 – Apr 2019",
                 location: "Pune, India",
+                image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400",
                 achievements: [
                   "Partnered with pharma clients on mid to senior hiring for Clinical and Biometrics domains",
                   "Recognized as \"Top Recruiter of Q3 2018\" by the President's Circle",
@@ -342,12 +378,12 @@ export default function Portfolio() {
             ].map((job, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
                 whileHover={{ y: -10, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-8">
-                  <div className="flex items-start space-x-6">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-8 gap-8">
+                  <div className="flex items-start space-x-6 flex-1">
                     <div className={`w-16 h-16 bg-gradient-to-r ${job.gradient} rounded-2xl flex items-center justify-center flex-shrink-0`}>
                       <Briefcase className="w-8 h-8 text-white" />
                     </div>
@@ -366,6 +402,15 @@ export default function Portfolio() {
                       </div>
                     </div>
                   </div>
+                  
+                  {/* Company/workplace image */}
+                  <div className="lg:w-48 lg:h-32 w-full h-48 rounded-xl overflow-hidden shadow-lg flex-shrink-0">
+                    <img 
+                      src={job.image} 
+                      alt={`${job.company} workplace`} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
                 <ul className="space-y-4">
                   {job.achievements.map((achievement, achievementIndex) => (
@@ -382,7 +427,12 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Skills Section */}
-      <AnimatedSection id="skills" className="py-24 bg-white">
+      <AnimatedSection id="skills" className="py-24 bg-gradient-to-br from-white via-blue-50 to-indigo-50 relative">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full filter blur-3xl"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6">
@@ -434,7 +484,7 @@ export default function Portfolio() {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="group bg-white rounded-3xl p-8 border border-gray-200 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 text-center shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
                 whileHover={{ y: -10, scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
@@ -450,7 +500,12 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Awards Section */}
-      <AnimatedSection className="py-24 bg-gray-50">
+      <AnimatedSection className="py-24 bg-gradient-to-br from-slate-50 via-gray-50 to-purple-50 relative">
+        {/* Background elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-tr from-yellow-300 to-orange-300 rounded-full filter blur-3xl"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6">
@@ -496,7 +551,7 @@ export default function Portfolio() {
             ].map((award, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
@@ -519,7 +574,12 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Education Section */}
-      <AnimatedSection className="py-24 bg-white">
+      <AnimatedSection className="py-24 bg-gradient-to-br from-white via-green-50 to-teal-50 relative">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-40 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-green-300 to-teal-300 rounded-full filter blur-3xl"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6">
@@ -532,10 +592,21 @@ export default function Portfolio() {
           
           <div className="max-w-2xl mx-auto">
             <motion.div
-              className="bg-white rounded-3xl p-12 border border-gray-200 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white/80 backdrop-blur-sm rounded-3xl p-12 border border-gray-200 text-center shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
               whileHover={{ y: -10, scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
+              {/* Education image */}
+              <div className="mb-8">
+                <div className="w-32 h-32 mx-auto rounded-2xl overflow-hidden shadow-lg mb-6">
+                  <img 
+                    src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                    alt="University campus" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              
               <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
                 <GraduationCap className="w-12 h-12 text-white" />
               </div>
@@ -550,8 +621,26 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Contact Section */}
-      <AnimatedSection id="contact" className="py-24 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+      <AnimatedSection id="contact" className="py-24 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full filter blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-pink-400 to-orange-400 rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6 text-center">
+          {/* Professional contact image */}
+          <div className="mb-12">
+            <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-2xl relative z-10">
+              <img 
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                alt="Professional contact" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent"></div>
+            </div>
+          </div>
+          
           <h2 className="text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Let's Work Together
@@ -564,7 +653,7 @@ export default function Portfolio() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
             <motion.div
-              className="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
@@ -575,7 +664,7 @@ export default function Portfolio() {
               <p className="text-gray-600 text-lg">rahulpanchal92710@gmail.com</p>
             </motion.div>
             <motion.div
-              className="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
@@ -589,7 +678,7 @@ export default function Portfolio() {
           
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
           >
             <Mail className="mr-3" size={24} />
             Get In Touch
@@ -598,9 +687,10 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-12">
+      <footer className="bg-gradient-to-r from-slate-900 via-gray-900 to-slate-900 py-12 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20"></div>
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg relative z-10">
             &copy; {new Date().getFullYear()} Rahul Panchal. All rights reserved.
           </p>
         </div>
