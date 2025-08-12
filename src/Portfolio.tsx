@@ -130,7 +130,7 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse" />
                   <div className="absolute inset-1 bg-white rounded-full overflow-hidden shadow-2xl">
                     <img 
-                      src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                      src="/WhatsApp Image 2025-07-13 at 2.23.00 PM copy.jpeg" 
                       alt="Rahul Panchal" 
                       className="w-full h-full object-cover"
                     />
@@ -268,8 +268,8 @@ export default function Portfolio() {
               <div className="mb-12">
                 <div className="relative w-80 h-96 mx-auto rounded-2xl overflow-hidden shadow-2xl">
                   <img 
-                    src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                    alt="Professional workspace" 
+                    src="/WhatsApp Image 2025-07-13 at 2.23.00 PM (1) copy.jpeg" 
+                    alt="Rahul Panchal Professional" 
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -633,8 +633,8 @@ export default function Portfolio() {
           <div className="mb-12">
             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-2xl relative z-10">
               <img 
-                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                alt="Professional contact" 
+                src="/WhatsApp Image 2025-07-13 at 2.23.00 PM copy.jpeg" 
+                alt="Rahul Panchal Contact" 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent"></div>
