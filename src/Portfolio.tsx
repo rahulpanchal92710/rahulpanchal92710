@@ -130,7 +130,7 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse" />
                   <div className="absolute inset-1 bg-white rounded-full overflow-hidden shadow-2xl">
                     <img 
-                      src="/WhatsApp Image 2025-07-13 at 2.23.00 PM copy.jpeg" 
+                      src="/WhatsApp Image 2025-07-13 at 2.23.00 PM (1) copy.jpeg" 
                       alt="Rahul Panchal" 
                       className="w-full h-full object-cover"
                     />
@@ -264,18 +264,6 @@ export default function Portfolio() {
             </div>
             
             <div className="space-y-8 relative z-10">
-              {/* Professional photo */}
-              <div className="mb-12">
-                <div className="relative w-80 h-96 mx-auto rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
-                    src="/WhatsApp Image 2025-07-13 at 2.23.00 PM (1) copy.jpeg" 
-                    alt="Rahul Panchal Professional" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                </div>
-              </div>
-              
               {[
                 {
                   icon: User,
@@ -340,7 +328,6 @@ export default function Portfolio() {
                 role: "Recruiter - Biometric Requirements",
                 period: "Apr 2020 – Present",
                 location: "Remote",
-                image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
                 achievements: [
                   "Leading recruitment for North America in Biostatistics, Programming, and Clinical Data roles",
                   "Expertise in sourcing, screening, engaging, and hiring through innovative recruiting strategies",
@@ -354,7 +341,6 @@ export default function Portfolio() {
                 role: "HR Recruiter",
                 period: "Apr 2019 – Mar 2020",
                 location: "Pune, India",
-                image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
                 achievements: [
                   "Focused on Biometrics and Clinical positions across major pharmaceutical accounts",
                   "Streamlined recruitment process post-acquisition by IQVIA",
@@ -367,7 +353,6 @@ export default function Portfolio() {
                 role: "Senior Technical Recruiter",
                 period: "Nov 2017 – Apr 2019",
                 location: "Pune, India",
-                image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400",
                 achievements: [
                   "Partnered with pharma clients on mid to senior hiring for Clinical and Biometrics domains",
                   "Recognized as \"Top Recruiter of Q3 2018\" by the President's Circle",
@@ -401,15 +386,6 @@ export default function Portfolio() {
                         </span>
                       </div>
                     </div>
-                  </div>
-                  
-                  {/* Company/workplace image */}
-                  <div className="lg:w-48 lg:h-32 w-full h-48 rounded-xl overflow-hidden shadow-lg flex-shrink-0">
-                    <img 
-                      src={job.image} 
-                      alt={`${job.company} workplace`} 
-                      className="w-full h-full object-cover"
-                    />
                   </div>
                 </div>
                 <ul className="space-y-4">
@@ -596,17 +572,6 @@ export default function Portfolio() {
               whileHover={{ y: -10, scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Education image */}
-              <div className="mb-8">
-                <div className="w-32 h-32 mx-auto rounded-2xl overflow-hidden shadow-lg mb-6">
-                  <img 
-                    src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                    alt="University campus" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              
               <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
                 <GraduationCap className="w-12 h-12 text-white" />
               </div>
@@ -629,7 +594,7 @@ export default function Portfolio() {
         </div>
         
         <div className="max-w-7xl mx-auto px-6 text-center">
-          {/* Professional contact image */}
+          {/* Your professional contact photo */}
           <div className="mb-12">
             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-2xl relative z-10">
               <img 
