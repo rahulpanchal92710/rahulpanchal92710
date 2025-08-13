@@ -448,7 +448,7 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Awards Section */}
-      <AnimatedSection className="py-24 bg-gray-900">
+      <AnimatedSection id="awards" className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
@@ -508,7 +508,7 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Education Section */}
-      <AnimatedSection className="py-24 bg-gray-800">
+      <AnimatedSection id="education" className="py-24 bg-gray-800">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
