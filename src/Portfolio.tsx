@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Download, User, Briefcase, GraduationCap, Award, Code, Database, Server, Globe, ExternalLink, Linkedin, Github } from "lucide-react";
+import { Mail, Phone, MapPin, Download, User, Briefcase, GraduationCap, Award, Code, Database, Server, Globe, ExternalLink, Linkedin, Github, Menu, X } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
@@ -28,6 +28,7 @@ export default function Portfolio() {
   const { scrollYProgress } = useScroll();
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,26 +58,29 @@ export default function Portfolio() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200' : 'bg-white/80 backdrop-blur-sm'
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          isScrolled ? 'bg-gray-900/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+              className="text-2xl font-bold text-yellow-400"
             >
               Rahul Panchal
             </motion.div>
+            
+            {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               {[
                 { id: "home", label: "Home" },
@@ -88,8 +92,8 @@ export default function Portfolio() {
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative transition-all duration-300 hover:text-blue-600 font-medium ${
-                    activeSection === item.id ? 'text-blue-600' : 'text-gray-700'
+                  className={`relative transition-all duration-300 hover:text-yellow-400 font-medium ${
+                    activeSection === item.id ? 'text-yellow-400' : 'text-white'
                   }`}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -98,117 +102,149 @@ export default function Portfolio() {
                   {activeSection === item.id && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow-400"
                     />
                   )}
                 </motion.button>
               ))}
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
+
+          {/* Mobile Navigation */}
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="md:hidden mt-4 bg-gray-800 rounded-lg p-4"
+            >
+              {[
+                { id: "home", label: "Home" },
+                { id: "about", label: "About" },
+                { id: "experience", label: "Experience" },
+                { id: "skills", label: "Skills" },
+                { id: "contact", label: "Contact" }
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`block w-full text-left py-2 px-4 rounded transition-colors ${
+                    activeSection === item.id ? 'text-yellow-400 bg-gray-700' : 'text-white hover:text-yellow-400'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </motion.div>
+          )}
         </div>
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-40 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+      <section id="home" className="min-h-screen flex items-center justify-center bg-gray-900 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-yellow-400/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8"
-            >
-              <div className="relative inline-block">
-                <div className="w-40 h-40 mx-auto mb-8 relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse" />
-                  <div className="absolute inset-1 bg-white rounded-full overflow-hidden shadow-2xl">
-                    <img 
-                      src="/WhatsApp Image 2025-07-13 at 2.23.00 PM (1) copy.jpeg" 
-                      alt="Rahul Panchal" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+        <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div>
+              <motion.h1 
+                className="text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <span className="text-white">Hi, I'm </span>
+                <span className="text-yellow-400">Rahul</span>
+              </motion.h1>
+              
+              <motion.p 
+                className="text-xl text-gray-300 mb-8 leading-relaxed"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Senior Talent Acquisition Professional specializing in Life Sciences & Biometrics
+              </motion.p>
 
-            <motion.h1 
-              className="text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <span className="text-gray-900">
-                Hi, I'm{" "}
-              </span>
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Rahul
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              <motion.p 
+                className="text-lg text-gray-400 mb-8"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                With over 9 years of experience in the US and Canada, I help build exceptional teams for leading pharmaceutical and biotechnology companies.
+              </motion.p>
+
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 mb-8"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <Button 
+                  size="lg" 
+                  className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-semibold"
+                  onClick={() => scrollToSection("contact")}
+                >
+                  <Mail className="mr-2" size={20} />
+                  Get In Touch
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 px-8 py-3 rounded-lg font-semibold"
+                >
+                  <Download className="mr-2" size={20} />
+                  Download CV
+                </Button>
+              </motion.div>
+
+              <motion.div 
+                className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-400"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                <div className="flex items-center">
+                  <Mail size={16} className="mr-2 text-yellow-400" />
+                  <span>rahulpanchal92710@gmail.com</span>
+                </div>
+                <div className="flex items-center">
+                  <Phone size={16} className="mr-2 text-yellow-400" />
+                  <span>+1 781-408-8012</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Content - Photo */}
+            <motion.div
+              className="flex justify-center lg:justify-end"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Senior Talent Acquisition Professional specializing in{" "}
-              <span className="text-orange-500 font-semibold">Life Sciences & Biometrics</span>
-            </motion.p>
-
-            <motion.p 
-              className="text-lg text-gray-500 mb-12 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              With over 9 years of experience in the US and Canada, I help build exceptional teams 
-              for leading pharmaceutical and biotechnology companies.
-            </motion.p>
-
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                onClick={() => scrollToSection("contact")}
-              >
-                <Mail className="mr-2" size={20} />
-                Get In Touch
-              </Button>
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <Download className="mr-2" size={20} />
-                Download Resume
-              </Button>
-            </motion.div>
-
-            <motion.div 
-              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-600"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-            >
-              <div className="flex items-center">
-                <Mail size={18} className="mr-2 text-blue-500" />
-                <span>rahulpanchal92710@gmail.com</span>
-              </div>
-              <div className="flex items-center">
-                <Phone size={18} className="mr-2 text-orange-500" />
-                <span>+1 781-408-8012</span>
+              <div className="relative">
+                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-yellow-400 shadow-2xl">
+                  <img 
+                    src="/WhatsApp Image 2025-07-13 at 2.23.00 PM (1) copy copy.jpeg" 
+                    alt="Rahul Panchal" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-xl"></div>
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"></div>
               </div>
             </motion.div>
           </div>
@@ -216,112 +252,71 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <AnimatedSection id="about" className="py-24 bg-gradient-to-br from-white via-slate-50 to-blue-50 relative">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-3">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full filter blur-3xl"></div>
-        </div>
-        
+      <AnimatedSection id="about" className="py-24 bg-gray-800">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                About Me
-              </span>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              <span className="text-yellow-400">About</span> Me
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8 relative z-10">
-              <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                Passionate About Building{" "}
-                <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-                  Exceptional Teams
-                </span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Passionate About Building Exceptional Teams
               </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
                 Tenacious and resourceful Talent Acquisition Professional with over 9 years of experience 
                 in the US and Canada, specializing in hiring for Pharmaceutical, Biotechnology, and Medical 
                 Device industries.
               </p>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-300 text-lg leading-relaxed mb-8">
                 Recognized for a proven track record in full-lifecycle recruitment and strategic sourcing 
                 in the Biometrics domain. I have successfully partnered with leading companies like J&J, 
                 Novartis, Pfizer, Takeda, BMS, and Gilead to build high-performing teams.
               </p>
               
-              <div className="grid grid-cols-2 gap-6 mt-12">
-                <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl border border-blue-100">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">9+</div>
-                  <div className="text-gray-600">Years Experience</div>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center p-6 bg-gray-700 rounded-lg">
+                  <div className="text-3xl font-bold text-yellow-400 mb-2">9+</div>
+                  <div className="text-gray-300">Years Experience</div>
                 </div>
-                <div className="text-center p-6 bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl border border-orange-100">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent mb-2">500+</div>
-                  <div className="text-gray-600">Successful Placements</div>
+                <div className="text-center p-6 bg-gray-700 rounded-lg">
+                  <div className="text-3xl font-bold text-yellow-400 mb-2">500+</div>
+                  <div className="text-gray-300">Successful Placements</div>
                 </div>
               </div>
             </div>
             
-            <div className="space-y-8 relative z-10">
-              {[
-                {
-                  icon: User,
-                  title: "Full-Lifecycle Recruitment",
-                  description: "Expert in end-to-end recruitment processes from sourcing to onboarding.",
-                  gradient: "from-blue-500 to-purple-500"
-                },
-                {
-                  icon: Database,
-                  title: "Biometrics Specialization",
-                  description: "Deep expertise in Biostatistics, Programming, and Clinical Data roles.",
-                  gradient: "from-orange-500 to-pink-500"
-                },
-                {
-                  icon: Globe,
-                  title: "Strategic Sourcing",
-                  description: "Innovative recruiting strategies for hard-to-fill positions.",
-                  gradient: "from-purple-500 to-indigo-500"
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-start space-x-6 p-6 bg-white rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className={`w-16 h-16 bg-gradient-to-r ${item.gradient} rounded-xl flex items-center justify-center flex-shrink-0`}>
-                    <item.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h4>
-                    <p className="text-gray-600">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="w-96 h-96 rounded-lg overflow-hidden shadow-2xl">
+                  <img 
+                    src="/WhatsApp Image 2025-07-13 at 2.23.00 PM copy copy.jpeg" 
+                    alt="Rahul Panchal Professional" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-xl"></div>
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"></div>
+              </div>
             </div>
           </div>
         </div>
       </AnimatedSection>
 
       {/* Experience Section */}
-      <AnimatedSection id="experience" className="py-24 bg-gradient-to-br from-slate-100 via-gray-50 to-blue-50 relative">
-        {/* Background elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-300 to-pink-300 rounded-full filter blur-3xl"></div>
-        </div>
-        
+      <AnimatedSection id="experience" className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-                Professional Experience
-              </span>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              My <span className="text-yellow-400">Experience</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
           </div>
           
-          <div className="space-y-12">
+          <div className="space-y-8">
             {[
               {
                 company: "Cytel Statistical Software & Services Pvt. Ltd.",
@@ -333,8 +328,7 @@ export default function Portfolio() {
                   "Expertise in sourcing, screening, engaging, and hiring through innovative recruiting strategies",
                   "Key clients include J&J, Novartis, Pfizer, Takeda, BMS, and Gilead",
                   "Achieved 95% client satisfaction rate and exceeded placement targets by 120%"
-                ],
-                gradient: "from-blue-500 to-purple-500"
+                ]
               },
               {
                 company: "IQVIA (formerly GCE Solutions)",
@@ -345,8 +339,7 @@ export default function Portfolio() {
                   "Focused on Biometrics and Clinical positions across major pharmaceutical accounts",
                   "Streamlined recruitment process post-acquisition by IQVIA",
                   "Maintained 90% offer acceptance rate through effective candidate engagement"
-                ],
-                gradient: "from-orange-500 to-pink-500"
+                ]
               },
               {
                 company: "Artech Infosystem Pvt. Ltd.",
@@ -357,42 +350,34 @@ export default function Portfolio() {
                   "Partnered with pharma clients on mid to senior hiring for Clinical and Biometrics domains",
                   "Recognized as \"Top Recruiter of Q3 2018\" by the President's Circle",
                   "Achieved #1 Vendor Award by Johnson & Johnson in 2018"
-                ],
-                gradient: "from-purple-500 to-indigo-500"
+                ]
               }
             ].map((job, index) => (
               <motion.div
                 key={index}
-                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
-                whileHover={{ y: -10, scale: 1.02 }}
+                className="bg-gray-800 rounded-lg p-8 border border-gray-700 hover:border-yellow-400 transition-all duration-300"
+                whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-8 gap-8">
-                  <div className="flex items-start space-x-6 flex-1">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${job.gradient} rounded-2xl flex items-center justify-center flex-shrink-0`}>
-                      <Briefcase className="w-8 h-8 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{job.company}</h3>
-                      <p className={`text-xl font-semibold mb-2 bg-gradient-to-r ${job.gradient} bg-clip-text text-transparent`}>
-                        {job.role}
-                      </p>
-                      <div className="flex flex-col sm:flex-row sm:items-center text-gray-500 space-y-2 sm:space-y-0 sm:space-x-6">
-                        <span className="font-medium">{job.period}</span>
-                        <span className="hidden sm:block">•</span>
-                        <span className="flex items-center">
-                          <MapPin size={16} className="mr-2" />
-                          {job.location}
-                        </span>
-                      </div>
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-2">{job.company}</h3>
+                    <p className="text-xl font-semibold text-yellow-400 mb-2">{job.role}</p>
+                    <div className="flex flex-col sm:flex-row sm:items-center text-gray-400 space-y-1 sm:space-y-0 sm:space-x-4">
+                      <span>{job.period}</span>
+                      <span className="hidden sm:block">•</span>
+                      <span className="flex items-center">
+                        <MapPin size={16} className="mr-1" />
+                        {job.location}
+                      </span>
                     </div>
                   </div>
                 </div>
-                <ul className="space-y-4">
+                <ul className="space-y-3">
                   {job.achievements.map((achievement, achievementIndex) => (
-                    <li key={achievementIndex} className="flex items-start text-gray-600">
-                      <div className={`w-2 h-2 bg-gradient-to-r ${job.gradient} rounded-full mt-2 mr-4 flex-shrink-0`} />
-                      <span className="text-lg">{achievement}</span>
+                    <li key={achievementIndex} className="flex items-start text-gray-300">
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                      <span>{achievement}</span>
                     </li>
                   ))}
                 </ul>
@@ -403,20 +388,13 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Skills Section */}
-      <AnimatedSection id="skills" className="py-24 bg-gradient-to-br from-white via-blue-50 to-indigo-50 relative">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full filter blur-3xl"></div>
-        </div>
-        
+      <AnimatedSection id="skills" className="py-24 bg-gray-800">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">
-                Core Skills & Expertise
-              </span>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              My <span className="text-yellow-400">Skills</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -424,51 +402,45 @@ export default function Portfolio() {
               { 
                 skill: "Talent Acquisition", 
                 description: "Full-cycle recruitment and strategic hiring",
-                icon: User,
-                gradient: "from-blue-500 to-purple-500"
+                icon: User
               },
               { 
                 skill: "Stakeholder Management", 
                 description: "Building strong client relationships",
-                icon: Globe,
-                gradient: "from-orange-500 to-pink-500"
+                icon: Globe
               },
               { 
                 skill: "Candidate Engagement", 
                 description: "Effective communication and relationship building",
-                icon: Mail,
-                gradient: "from-purple-500 to-indigo-500"
+                icon: Mail
               },
               { 
                 skill: "Boolean Sourcing", 
                 description: "Advanced search techniques and sourcing strategies",
-                icon: Code,
-                gradient: "from-yellow-500 to-orange-500"
+                icon: Code
               },
               { 
                 skill: "ATS Tools", 
                 description: "Proficient in various Applicant Tracking Systems",
-                icon: Database,
-                gradient: "from-green-500 to-teal-500"
+                icon: Database
               },
               { 
                 skill: "Market Research", 
                 description: "Industry analysis and competitive intelligence",
-                icon: Server,
-                gradient: "from-pink-500 to-rose-500"
+                icon: Server
               }
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 text-center shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
-                whileHover={{ y: -10, scale: 1.05 }}
+                className="bg-gray-700 rounded-lg p-6 text-center hover:bg-gray-600 transition-all duration-300"
+                whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className={`w-20 h-20 bg-gradient-to-r ${item.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <item.icon className="w-10 h-10 text-white" />
+                <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-8 h-8 text-gray-900" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{item.skill}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{item.skill}</h3>
+                <p className="text-gray-300">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -476,20 +448,13 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Awards Section */}
-      <AnimatedSection className="py-24 bg-gradient-to-br from-slate-50 via-gray-50 to-purple-50 relative">
-        {/* Background elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-tr from-yellow-300 to-orange-300 rounded-full filter blur-3xl"></div>
-        </div>
-        
+      <AnimatedSection className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
-                Awards & Recognition
-              </span>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              Awards & <span className="text-yellow-400">Recognition</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-orange-500 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -497,50 +462,43 @@ export default function Portfolio() {
               { 
                 title: "Recruiter of the Quarter – 2024", 
                 company: "Cytel", 
-                description: "Outstanding performance in Q1 2024",
-                gradient: "from-yellow-500 to-orange-500"
+                description: "Outstanding performance in Q1 2024"
               },
               { 
                 title: "President Circle Recruiter – Q3 2018", 
                 company: "Artech", 
-                description: "Top performer recognition",
-                gradient: "from-purple-500 to-indigo-500"
+                description: "Top performer recognition"
               },
               { 
                 title: "Rookie of the Year – 2018", 
                 company: "Industry Recognition", 
-                description: "Best new talent in recruitment",
-                gradient: "from-blue-500 to-purple-500"
+                description: "Best new talent in recruitment"
               },
               { 
                 title: "Elite Club Recruiter – Q2 to Q4 2018", 
                 company: "Artech", 
-                description: "Consistent top performance",
-                gradient: "from-green-500 to-teal-500"
+                description: "Consistent top performance"
               },
               { 
                 title: "#1 Vendor Award by Johnson & Johnson – 2018", 
                 company: "J&J", 
-                description: "Best recruitment partner",
-                gradient: "from-pink-500 to-rose-500"
+                description: "Best recruitment partner"
               }
             ].map((award, index) => (
               <motion.div
                 key={index}
-                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
-                whileHover={{ y: -5, scale: 1.02 }}
+                className="bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-yellow-400 transition-all duration-300"
+                whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-start space-x-6">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${award.gradient} rounded-2xl flex items-center justify-center flex-shrink-0`}>
-                    <Award className="w-8 h-8 text-white" />
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Award className="w-6 h-6 text-gray-900" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{award.title}</h3>
-                    <p className={`font-semibold mb-3 bg-gradient-to-r ${award.gradient} bg-clip-text text-transparent`}>
-                      {award.company}
-                    </p>
-                    <p className="text-gray-600">{award.description}</p>
+                    <h3 className="text-lg font-bold text-white mb-2">{award.title}</h3>
+                    <p className="text-yellow-400 font-semibold mb-2">{award.company}</p>
+                    <p className="text-gray-300">{award.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -550,112 +508,82 @@ export default function Portfolio() {
       </AnimatedSection>
 
       {/* Education Section */}
-      <AnimatedSection className="py-24 bg-gradient-to-br from-white via-green-50 to-teal-50 relative">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-40 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-green-300 to-teal-300 rounded-full filter blur-3xl"></div>
-        </div>
-        
+      <AnimatedSection className="py-24 bg-gray-800">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">
-                Education
-              </span>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              My <span className="text-yellow-400">Education</span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-teal-500 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
           </div>
           
           <div className="max-w-2xl mx-auto">
             <motion.div
-              className="bg-white/80 backdrop-blur-sm rounded-3xl p-12 border border-gray-200 text-center shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
-              whileHover={{ y: -10, scale: 1.02 }}
+              className="bg-gray-700 rounded-lg p-8 text-center"
+              whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
-                <GraduationCap className="w-12 h-12 text-white" />
+              <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                <GraduationCap className="w-10 h-10 text-gray-900" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Bachelor's Degree in Mechanical Engineering</h3>
-              <p className="text-xl text-gray-600 mb-4">Kurukshetra University</p>
-              <p className="text-lg bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent font-semibold">
-                2011 – 2015
-              </p>
+              <h3 className="text-2xl font-bold text-white mb-4">Bachelor's Degree in Mechanical Engineering</h3>
+              <p className="text-xl text-gray-300 mb-4">Kurukshetra University</p>
+              <p className="text-lg text-yellow-400 font-semibold">2011 – 2015</p>
             </motion.div>
           </div>
         </div>
       </AnimatedSection>
 
       {/* Contact Section */}
-      <AnimatedSection id="contact" className="py-24 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full filter blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-pink-400 to-orange-400 rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
-        </div>
-        
+      <AnimatedSection id="contact" className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          {/* Your professional contact photo */}
-          <div className="mb-12">
-            <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-2xl relative z-10">
-              <img 
-                src="/WhatsApp Image 2025-07-13 at 2.23.00 PM copy.jpeg" 
-                alt="Rahul Panchal Contact" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent"></div>
-            </div>
-          </div>
-          
-          <h2 className="text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Let's Work Together
-            </span>
+          <h2 className="text-4xl font-bold mb-4">
+            Get In <span className="text-yellow-400">Touch</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-12 rounded-full"></div>
-          <p className="text-2xl mb-16 max-w-3xl mx-auto text-gray-600 leading-relaxed">
+          <div className="w-20 h-1 bg-yellow-400 mx-auto mb-8"></div>
+          <p className="text-xl mb-12 max-w-2xl mx-auto text-gray-300">
             Ready to discuss your talent acquisition needs? Let's connect and explore how I can help build your dream team.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-2xl mx-auto">
             <motion.div
-              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
-              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-gray-800 rounded-lg p-6 border border-gray-700"
+              whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Mail className="w-8 h-8 text-white" />
+              <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-6 h-6 text-gray-900" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Email Me</h3>
-              <p className="text-gray-600 text-lg">rahulpanchal92710@gmail.com</p>
+              <h3 className="text-lg font-bold text-white mb-2">Email Me</h3>
+              <p className="text-gray-300">rahulpanchal92710@gmail.com</p>
             </motion.div>
             <motion.div
-              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
-              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-gray-800 rounded-lg p-6 border border-gray-700"
+              whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Phone className="w-8 h-8 text-white" />
+              <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-6 h-6 text-gray-900" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Call Me</h3>
-              <p className="text-gray-600 text-lg">+1 781-408-8012</p>
+              <h3 className="text-lg font-bold text-white mb-2">Call Me</h3>
+              <p className="text-gray-300">+1 781-408-8012</p>
             </motion.div>
           </div>
           
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300 relative z-10"
+            className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-semibold"
           >
-            <Mail className="mr-3" size={24} />
-            Get In Touch
+            <Mail className="mr-2" size={20} />
+            Send Message
           </Button>
         </div>
       </AnimatedSection>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-slate-900 via-gray-900 to-slate-900 py-12 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20"></div>
+      <footer className="bg-gray-800 py-8 border-t border-gray-700">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-gray-400 text-lg relative z-10">
+          <p className="text-gray-400">
             &copy; {new Date().getFullYear()} Rahul Panchal. All rights reserved.
           </p>
         </div>
