@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
 
 const AnimatedSection = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+const AnimatedSection = ({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -13,6 +14,7 @@ const AnimatedSection = ({ children, className = "" }: { children: React.ReactNo
 
   return (
     <motion.div
+      id={id}
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
