@@ -78,67 +78,71 @@ const Portfolio: React.FC = () => {
   };
 
   const skills = [
-    { name: 'JavaScript', level: 90 },
-    { name: 'React', level: 85 },
-    { name: 'Node.js', level: 80 },
-    { name: 'Python', level: 75 },
-    { name: 'SQL', level: 85 },
-    { name: 'MongoDB', level: 70 },
-    { name: 'AWS', level: 65 },
-    { name: 'Docker', level: 60 }
+    { name: 'Talent Acquisition', level: 95 },
+    { name: 'Stakeholder Management', level: 90 },
+    { name: 'Candidate Engagement', level: 92 },
+    { name: 'Boolean Sourcing', level: 88 },
+    { name: 'ATS Tools', level: 85 },
+    { name: 'Market Research', level: 80 },
+    { name: 'Biometrics Domain', level: 90 },
+    { name: 'Full-lifecycle Recruitment', level: 95 }
   ];
 
   const experiences = [
     {
-      title: 'Senior Software Engineer',
-      company: 'Tech Solutions Inc.',
-      period: '2022 - Present',
-      description: 'Led development of scalable web applications using React and Node.js. Managed a team of 5 developers and improved system performance by 40%.'
+      title: 'Recruiter - Biometric Requirements',
+      company: 'Cytel Statistical Software & Services Pvt. Ltd.',
+      period: 'Apr 2020 – Present',
+      description: 'Leading recruitment for North America in Biostatistics, Programming, and Clinical Data roles. Expertise in sourcing, screening, engaging, and hiring through innovative recruiting strategies. Key clients include J&J, Novartis, Pfizer, Takeda, BMS, and Gilead.'
     },
     {
-      title: 'Full Stack Developer',
-      company: 'Digital Innovations',
-      period: '2020 - 2022',
-      description: 'Developed and maintained multiple client projects using modern web technologies. Collaborated with cross-functional teams to deliver high-quality solutions.'
+      title: 'HR Recruiter',
+      company: 'IQVIA (formerly GCE Solutions)',
+      period: 'Apr 2019 – Mar 2020',
+      description: 'Focused on Biometrics and Clinical positions across major pharmaceutical accounts. Streamlined recruitment process post-acquisition by IQVIA.'
     },
     {
-      title: 'Junior Developer',
-      company: 'StartUp Hub',
-      period: '2019 - 2020',
-      description: 'Built responsive web applications and gained experience in agile development methodologies. Contributed to open-source projects and learned industry best practices.'
+      title: 'Senior Technical Recruiter',
+      company: 'Artech Infosystem Pvt. Ltd.',
+      period: 'Nov 2017 – Apr 2019',
+      description: 'Partnered with pharma clients on mid to senior hiring for Clinical and Biometrics domains. Recognized as "Top Recruiter of Q3 2018" by the President\'s Circle.'
     }
   ];
 
   const awards = [
     {
-      title: 'Best Innovation Award',
-      organization: 'Tech Conference 2023',
-      year: '2023'
+      title: 'Recruiter of the Quarter',
+      organization: 'Cytel',
+      year: '2024'
     },
     {
-      title: 'Employee of the Year',
-      organization: 'Tech Solutions Inc.',
-      year: '2022'
+      title: 'President Circle Recruiter',
+      organization: 'Artech',
+      year: '2018'
     },
     {
-      title: 'Outstanding Graduate',
-      organization: 'University of Technology',
-      year: '2019'
+      title: '#1 Vendor Award',
+      organization: 'Johnson & Johnson',
+      year: '2018'
+    },
+    {
+      title: 'Rookie of the Year',
+      organization: 'Artech',
+      year: '2018'
+    },
+    {
+      title: 'Elite Club Recruiter',
+      organization: 'Artech',
+      year: '2018'
     }
   ];
 
   const education = [
     {
-      degree: 'Master of Computer Science',
-      institution: 'University of Technology',
-      period: '2017 - 2019',
-      gpa: '3.8/4.0'
-    },
-    {
-      degree: 'Bachelor of Software Engineering',
-      institution: 'State University',
-      period: '2013 - 2017',
-      gpa: '3.6/4.0'
+      degree: 'Bachelor\'s Degree in Mechanical Engineering',
+      institution: 'Kurukshetra University',
+      period: '2011 – 2015',
+      gpa: ''
     }
   ];
 
@@ -181,10 +185,10 @@ const Portfolio: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Hi, I'm <span className="text-yellow-400">John Doe</span>
+                Hi, I'm <span className="text-yellow-400">Rahul Panchal</span>
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                Full Stack Developer passionate about creating innovative web solutions
+                Senior Talent Acquisition Professional | Life Sciences & Biometrics Hiring
               </p>
               <div className="flex space-x-4">
                 <button
@@ -226,23 +230,22 @@ const Portfolio: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I'm a passionate Full Stack Developer with over 5 years of experience in creating
-                robust web applications. I specialize in modern JavaScript frameworks and have a
-                strong background in both frontend and backend development.
+                Tenacious and resourceful Talent Acquisition Professional with over 9 years of experience in the US and Canada,
+                specializing in hiring for Pharmaceutical, Biotechnology, and Medical Device industries. Recognized for a proven track
+                record in full-lifecycle recruitment and strategic sourcing in the Biometrics domain.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                My journey in software development started with a curiosity about how things work
-                behind the scenes. This curiosity has driven me to continuously learn and adapt to
-                new technologies and methodologies.
+                My expertise spans across North America, working with leading pharmaceutical companies including J&J, Novartis, 
+                Pfizer, Takeda, BMS, and Gilead. I excel in sourcing, screening, engaging, and hiring through innovative recruiting strategies.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-gray-800 p-4 rounded-lg">
-                  <h4 className="text-yellow-400 font-semibold mb-2">Frontend</h4>
-                  <p className="text-gray-300 text-sm">React, Vue.js, TypeScript</p>
+                  <h4 className="text-yellow-400 font-semibold mb-2">Specialization</h4>
+                  <p className="text-gray-300 text-sm">Biostatistics, Programming, Clinical Data</p>
                 </div>
                 <div className="bg-gray-800 p-4 rounded-lg">
-                  <h4 className="text-yellow-400 font-semibold mb-2">Backend</h4>
-                  <p className="text-gray-300 text-sm">Node.js, Python, PostgreSQL</p>
+                  <h4 className="text-yellow-400 font-semibold mb-2">Industries</h4>
+                  <p className="text-gray-300 text-sm">Pharmaceutical, Biotechnology, Medical Device</p>
                 </div>
               </div>
             </div>
@@ -364,21 +367,21 @@ const Portfolio: React.FC = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-yellow-400">Let's Connect</h3>
               <p className="text-gray-300 text-lg mb-8">
-                I'm always interested in new opportunities and exciting projects. 
-                Feel free to reach out if you'd like to collaborate!
+                I'm always interested in connecting with talented professionals and exploring new opportunities in the life sciences industry. 
+                Feel free to reach out for recruitment needs or career discussions!
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
                   <Mail className="w-6 h-6 text-yellow-400" />
-                  <span className="text-gray-300">john.doe@email.com</span>
+                  <span className="text-gray-300">rahulpanchal92710@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Phone className="w-6 h-6 text-yellow-400" />
-                  <span className="text-gray-300">+1 (555) 123-4567</span>
+                  <span className="text-gray-300">+1 781-408-8012</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <MapPin className="w-6 h-6 text-yellow-400" />
-                  <span className="text-gray-300">San Francisco, CA</span>
+                  <span className="text-gray-300">United States</span>
                 </div>
               </div>
               <div className="flex space-x-4 mt-8">
@@ -413,7 +416,7 @@ const Portfolio: React.FC = () => {
       <footer className="bg-gray-800 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-gray-400">
-            © 2024 John Doe. All rights reserved.
+            © 2024 Rahul Panchal. All rights reserved.
           </p>
         </div>
       </footer>
